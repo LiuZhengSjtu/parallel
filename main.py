@@ -9,16 +9,16 @@ import keyboard
 import numpy as np
 # import urx
 import time
-import rtde_control
-import ur_move
+# import rtde_control
+# import ur_move
 import parallel_robot
-import epos_read
+# import epos_read
 import threading
 from datetime import datetime
 import  os
 import csv
 
-EPOS = True
+EPOS = False
 UR5E = False
 KINE = True
 
@@ -69,6 +69,7 @@ def process_parallel_robot(indata_parallel_robot,share_dict):
         k += 1
         #    angles (degree)
         forw.baseangles = share_dict['angles']
+        print(f'the angles at base is {forw.baseangles}')
 
         forw.newton_calmu()
         forw.pose_cal()
@@ -76,6 +77,7 @@ def process_parallel_robot(indata_parallel_robot,share_dict):
         if forw.newton_calmu_done:
             share_dict['dcm'] = forw.dcm
             share_dict['shift'] = forw.shift * 0.001 #  turn unit form mm to m.
+            print(f'the dcm = {forw.dcm} and the shift is {forw.shift * 0.001 }')
         # share_dict['euler'] = forw.euler
         else:
             print('newton iteration error')

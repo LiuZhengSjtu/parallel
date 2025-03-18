@@ -78,7 +78,7 @@ class p_forward:
 			return self.posE
 		else:
 			return self.posF
-		
+
 	def lenff(self, angles = baseangles ):
 		#	square of distance, F  , in base frame
 		posF1 = self.ab2ef(angles[0:2])
@@ -291,5 +291,8 @@ class p_forward:
 			# print("the 3*3 matrix is ",M_orx)
 			# print('the 3*1 vector is ', o_r_e)
 			# print('the euler angles are:',euler_angles)
+
+
+	#	below functions are for the IK
 
 # forwardcal = p_forward()
